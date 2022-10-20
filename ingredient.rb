@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Ingredient
-  attr_reader :name
+  attr_reader :name, :price
 
   def initialize(name, a, b, c, d, e, price, count)
     @name = name

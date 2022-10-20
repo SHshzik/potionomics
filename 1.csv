@@ -1,0 +1,101 @@
+Ingredients,A,B,C,D,E,Total Magimin,Price (Quinn),Value,Taste,Touch,Smell,Sight,Sound,Type,Rarity
+Hallucinatory Shroom,0,0,30,0,0,30,18,1.667,Good,,,,Bad,Fungus,Rare
+Sack of Composite Slime,0,0,30,0,0,30,18,1.667,,,,,,Slime,Common
+River Calamari,8,0,0,0,0,8,5,1.600,,Bad,,,,Fish,Common
+Feyberry,6,0,0,0,0,6,4,1.500,,,,,,Fruit,Common
+Mandrake Root,0,6,0,0,0,6,4,1.500,,,,,,Plant,Common
+Serpent's Slippery Tongue,0,8,0,0,0,8,6,1.333,,,Bad,,,Flesh,Common
+Unicorn Horn,0,0,8,0,0,8,6,1.333,Bad,,,,,Bone,Common
+Swamp Octopus,24,0,0,0,0,24,18,1.333,,Bad,,,,Fish,Common
+Qilin's Tri-Horn,0,0,24,0,0,24,18,1.333,Bad,,,,,Bone,Common
+Dwarf Kraken,40,0,0,0,0,40,30,1.333,,Bad,,,,Fish,Common
+Manwyrm Root,0,18,0,0,0,18,14,1.286,,,,,,Plant,Common
+Puckberry,18,0,0,0,0,18,16,1.125,,,,,,Fruit,Common
+Salamander's Fiery Tongue,0,24,0,0,0,24,22,1.091,,,Bad,,,Flesh,Common
+Fire Flower,40,0,0,20,0,60,55,1.091,,,Bad,,,Flower,Rare
+Frog Leg,0,0,24,12,0,36,33,1.091,,,,Bad,,Flesh,Epic
+Antlered Jelly,30,0,0,0,0,30,28,1.071,,Bad,,Good,,Slime,Uncommon
+Golemite,18,12,0,10,0,40,38,1.053,,,,,,Mineral,Rare
+Spriggan Antler,0,0,40,0,0,40,38,1.053,Bad,,,,,Bone,Uncommon
+Bog Beet,0,27,0,0,0,27,27,1.000,Bad,,,,Good,Plant,Rare
+Bogeyberry,30,0,0,0,0,30,30,1.000,,,,,,Fruit,Common
+Reef Radish,0,30,0,0,0,30,32,0.938,Bad,,,,Good,Plant,Rare
+Leech Snail's Shell,12,12,0,0,0,24,26,0.923,,,,,,Mineral,Uncommon
+Figment Pomme,0,18,6,0,0,24,26,0.923,,,,,,Fruit,Uncommon
+Warg Pheromones,12,0,12,0,0,24,26,0.923,,,,,,,
+Saltwatermelon,0,0,0,40,0,40,44,0.909,,,,Bad,,Fruit,Uncommon
+Horned Jelly,18,0,0,0,0,18,20,0.900,,Bad,,Good,,Slime,Uncommon
+Mandragon Root,0,30,0,0,0,30,34,0.882,,,,,,Plant,Common
+Mass Grave Enoki,56,112,112,56,0,336,386,0.870,,,,,,,
+Ghostlight Bloom,18,0,0,6,0,24,28,0.857,,,,,,Flower,Uncommon
+Sack of Slime,0,0,6,0,0,6,7,0.857,,,,,,Slime,Common
+Sack of Hive Slime,0,0,18,0,0,18,21,0.857,,,,,,Slime,Common
+Moss Berries,0,10,0,20,0,30,35,0.857,,,,,,Fruit,Common
+Golem's-Eye Diamond,0,12,12,0,0,24,28,0.857,,,,,,Gem,Uncommon
+Swamp Fish,12,0,0,6,0,18,22,0.818,,,,,,Fish,Common
+Chimera Waste,0,0,64,32,0,96,118,0.814,,,Bad,,,Essences,Common
+Miasma Spore,0,18,0,6,0,24,30,0.800,,,,,,Fungus,Uncommon
+Nessie Pheromones,20,0,20,0,0,40,50,0.800,,,,,,Essences,Common
+Spider's-Bait Diamond,0,20,20,0,0,40,50,0.800,,,,,,Gem,Uncommon
+Hoarite,55,55,0,22,0,132,167,0.790,,,,,,,
+Courtier's Orchid,8,24,24,0,0,56,72,0.778,,,Good,,,Flower,Epic
+Hydra Vertebra,9,9,9,0,0,27,35,0.771,,,,,,Bone,Common
+Raven's Shadow,0,10,12,18,0,40,52,0.769,,,,,,,
+Bioplasm,0,48,32,16,0,96,125,0.768,,,,Bad,Good,Essences,Rare
+Abyssalite,30,20,0,0,10,60,79,0.759,,,,,,Mineral,Uncommon
+Glass Ore,0,0,0,18,0,18,24,0.750,,,,,,Ores,Common
+Fulgurite Ore,0,0,0,30,0,30,40,0.750,,,,,,Ores,Uncommon
+Ectoplasm,0,70,70,28,0,168,226,0.743,,,,Bad,Good,Essences,Rare
+Nuclear Shadow,0,70,70,28,0,168,228,0.737,,Good,,,,Essences,Rare
+River-Pixie's Shell,4,4,0,0,0,8,11,0.727,,,,,,Mineral,Uncommon
+Sea Salt,30,0,0,0,10,40,55,0.727,,,,,,Mineral,Uncommon
+Raiju Droppings,0,0,30,10,0,40,55,0.727,,,,,,Essences,Uncommon
+Sorcerite,70,70,0,28,0,168,232,0.724,Bad,,,Good,,Mineral,Rare
+Supernalite,48,32,0,16,0,96,134,0.716,Bad,,,Good,,Mineral,Rare
+Arcane Truffle,0,42,42,42,42,168,236,0.712,,,,,,,
+Bubble Ooze,9,9,12,12,0,42,60,0.700,,,,,,Slime,Epic
+Silver Dollop,24,24,24,24,0,96,138,0.696,,,,,,Slime,Epic
+Geode Citrus,0,16,0,0,48,64,94,0.681,,,,,,Fruit,Uncommon
+Orchid of the Witch Queen,28,70,0,70,0,168,248,0.677,,,Good,,,Flower,Rare
+Underworld Pomegranate,28,28,28,140,0,224,332,0.675,,,,,,,
+Death's Embrace,33,33,33,0,33,132,196,0.673,,,,,,,
+Electrocution Eel,10,10,10,0,0,30,45,0.667,,,,Good,,Fish,Uncommon
+Dropspider's Shadow,0,0,30,20,10,60,90,0.667,,,,,,Essences,Rare
+Body Snatcher's Sloughed Skin,0,0,0,66,22,88,132,0.667,,,,,,Flesh,Rare
+Malachite Ore,30,10,0,0,20,60,93,0.645,,,,,,Ores,Rare
+Mana Blaze,50,40,30,20,10,150,234,0.641,,,,,,,
+Wraith Orchid,0,0,0,12,0,12,19,0.632,,,,,,Flower,Common
+Copper Dollop,15,15,15,15,0,60,95,0.632,,,,,,Slime,Rare
+Banshee's Bloody Tongue,0,40,0,0,0,40,64,0.625,,,Bad,,,Flesh,Common
+Cobweb Crayfish,10,0,20,0,0,30,48,0.625,,,,,,,
+Phantom Pomme,0,10,30,0,0,40,64,0.625,Good,,,,Bad,Fruit,Epic
+Kappa Pheromones,4,0,4,0,0,8,13,0.615,,,,,,Essences,Uncommon
+Trollstool Mushroom,0,12,0,0,0,12,20,0.600,,Good,,,,Fungus,Common
+Static Spiderling,0,0,0,0,30,30,50,0.600,,,,Bad,Good,Bug,Rare
+Selkie Lice,10,20,0,0,0,30,50,0.600,,Good,,,,Bug,Rare
+Sepulcher Widow,0,0,0,0,48,48,82,0.585,,,,Bad,Good,Bug,Uncommon
+Mote of Mana,15,15,15,15,15,75,130,0.577,,,,,,Pure Mana,Epic
+Pixiedust Diamond,0,4,4,0,0,8,14,0.571,,,,,,Gem,Uncommon
+Fairy Flower Bloom,20,0,0,0,0,20,35,0.571,,,Good,,,Flower,Common
+Cubic Ooze,3,3,3,0,0,9,16,0.563,,,,,,Slime,Rare
+Mana Maelstrom,98,28,28,28,28,210,375,0.560,,,,Good,Good,Pure Mana,Epic
+Rotfly Adult,0,0,20,0,0,20,38,0.526,Good,,,,,Bug,Uncommon
+Shadowveil Pearl,0,0,0,20,0,20,38,0.526,,,,Good,,Gem,Uncommon
+Mana Vortex,28,98,28,28,28,210,400,0.525,Good,,,,Good,Pure Mana,Epic
+Fairy Flower Bud,12,0,0,0,0,12,23,0.522,,,Good,,,Flower,Common
+Squid Vine,20,20,15,0,15,70,135,0.519,,,,,,Plant,Rare
+Sphinx Flea,12,6,0,0,0,18,35,0.514,,Good,,,,Bug,Rare
+Rotfly Cocoon,0,0,12,0,0,12,25,0.480,Good,,,,,Bug,Uncommon
+Desert Metal,0,12,0,0,0,12,25,0.480,,Good,,,,Ores,Common
+Mana Heart,28,28,28,98,28,210,450,0.467,,,,,,,
+Murkwater Pearl,0,0,0,12,0,12,27,0.444,,,,Good,,Gem,Uncommon
+Mana Singularity,28,28,28,28,98,210,475,0.442,,,Good,,Good,Pure Mana,Epic
+Slapping Turtle's Shell,20,20,0,0,0,40,92,0.435,,,,,,Mineral,Common
+Crag Crab,0,0,0,0,32,32,75,0.427,,,Good,,,Fish,Rare
+Thunder Quartz,30,10,20,0,0,60,144,0.417,,,,,,Gem,Uncommon
+Rotfly Larva,0,0,4,0,0,4,10,0.400,Good,,,,,Bug,Common
+Photonic Spore,0,10,0,30,0,40,104,0.385,,,,,,,
+Barghast Canine,0,30,0,0,10,40,110,0.364,,,,,,Bone,Rare
+Fairy Flower Bulb,4,0,0,0,0,4,14,0.286,,,Good,,,Flower,Common
+Giantstool Mushroom,0,20,0,0,0,20,80,0.250,,Good,,,,Fungus,Common
+Impstool Mushroom,0,4,0,0,0,4,17,0.235,,Good,,,,Fungus,Common

@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class Ingredient
-  attr_reader :name, :price
+  attr_reader :name, :price, :count
 
-  def initialize(name, a, b, c, d, e, price, count)
+  def initialize(name, a, b, c, d, e, price, count, available)
     @name = name
     @a_mag = a
     @b_mag = b
@@ -12,6 +12,7 @@ class Ingredient
     @e_mag = e
     @price = price
     @count = count
+    @available = available
   end
 
   def suits?(receipt)

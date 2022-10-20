@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Draw
+  attr_reader :ingredients
+
   def initialize(ingredients)
     @ingredients = ingredients
   end
@@ -22,6 +24,14 @@ class Draw
 
   def total_price
     @ingredients.sum(&:price)
+  end
+
+  def ratio
+    total_maginim.to_f / total_price
+  end
+
+  def total_maginim
+    magimin.sum
   end
 
   private

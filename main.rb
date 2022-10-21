@@ -1,27 +1,21 @@
 require 'sqlite3'
+require 'highline'
 require './ingredient'
 require './draw'
+require './potion'
 
 db = SQLite3::Database.new 'potionomics.db'
+cli = HighLine.new
 
-ingredients = []
-db.execute('select * from ingredients where available') do |row|
-  ingredients << Ingredient.new(*row)
-end
+potions = db.execute('select * from potions').map { Potion.new(*_1) }
 
-receipt = [3, 4, 3, 0, 0]
-capacity = 8
-max_magimin = 240
-min_magimin = 100
-# ingredients = ingredients.select { _1.count > 0 }
-filtered_ingredients = ingredients.select { _1.suits?(receipt) }
-                         
-                        
-
-
-def check_ingredients(comb)
-  grouped = comb.group_by(&:name).transform_values(&:count)
-  comb.all? { grouped[_1.name] <= _1.count }
+# select potion for draw
+selected_potion = nil
+cli.choose do |menu|
+  menu.prompt = "Выбери зелье: "
+  potions.each do |potion|
+    menu.choice(potion.name) { selected_potion = potion }
+  end
 end
 
 draws = []

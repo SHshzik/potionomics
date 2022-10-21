@@ -11,4 +11,8 @@ class Potion
     @d_val = d
     @e_val = e
   end
+
+  def receipt
+    @receipt ||= [@a_val, @b_val, @c_val, @d_val, @e_val]
+  end
 end

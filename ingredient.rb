@@ -3,7 +3,7 @@
 class Ingredient
   attr_reader :name, :price, :count
 
-  def initialize(name, a, b, c, d, e, price, count, available)
+  def initialize(name, a, b, c, d, e, price, available, count)
     @name = name
     @a_mag = a
     @b_mag = b
@@ -11,8 +11,8 @@ class Ingredient
     @d_mag = d
     @e_mag = e
     @price = price
-    @count = count
     @available = available
+    @count = count
   end
 
   def suits?(receipt)

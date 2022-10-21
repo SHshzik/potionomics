@@ -49,3 +49,22 @@ draws.sort_by(&:total_maginim).each do |draw|
   p draw.ratio
   p '----------------------------'
 end
+
+p '------'
+p '------'
+p 'IDEAL!'
+
+magic_number = [
+  9, 19, 29, 39,
+  74, 89, 104, 114,
+  169, 194, 214, 234,
+  314, 344, 369, 399
+]
+
+draws.select { magic_number.include?(_1.total_maginim) }.sort_by(&:total_maginim).each do |draw|
+  p draw.total_price
+  p "#{draw.magimin} - #{draw.total_maginim}"
+  pp draw.ingredients.map { "#{_1.name} (#{_1.magimin}) (#{_1.count})" }
+  p draw.ratio
+  p '----------------------------'
+end

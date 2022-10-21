@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    highline (2.0.3)
     sqlite3 (1.5.3-x64-mingw-ucrt)
     sqlite3 (1.5.3-x86_64-linux)
 
@@ -9,6 +10,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  highline
   sqlite3
 
 BUNDLED WITH

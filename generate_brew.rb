@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 require 'highline'
-require './potion'
-require './ingredient'
-require './brew'
-require './brew_needed_ingredient'
+require './models/potion'
+require './models/ingredient'
+require './models/brew'
+require './models/brew_needed_ingredient'
 
 cli = HighLine.new
 

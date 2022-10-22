@@ -3,6 +3,7 @@ GEM
   specs:
     highline (2.0.3)
     percentage (2.0.0)
+    sequel (5.61.0)
     sqlite3 (1.5.3-x64-mingw-ucrt)
     sqlite3 (1.5.3-x86_64-linux)
 
@@ -13,6 +14,7 @@ PLATFORMS
 DEPENDENCIES
   highline
   percentage
+  sequel
   sqlite3
 
 BUNDLED WITH

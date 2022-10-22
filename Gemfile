@@ -7,3 +7,4 @@ source "https://rubygems.org"
 gem 'sqlite3'
 gem 'highline'
 gem 'percentage'
+gem 'sequel'

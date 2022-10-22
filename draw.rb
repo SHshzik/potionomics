@@ -10,12 +10,14 @@ class Draw
   def valid?(receipt)
     return false if receipt.each_with_index.any? { _1.positive? && magimin[_2].zero? }
 
-    base = receipt.select(&:positive?).min
-    new_magimin = magimin
-                    .map
-                    .with_index { |m, index| magimin_to_base(m, index, base, receipt) }
+    sum_i = receipt.sum
 
-    new_magimin.select(&:positive?).each_cons(2).all? { _1 == _2 }
+    new_magimin = magimin.map { _1.as_percentage_of(total_maginim) }
+    receipt.each_with_index.all? do |i, index|
+      next true if i.zero?
+
+      (i.as_percentage_of(sum_i).to_f - new_magimin[index].to_f).abs < 7
+    end
   end
 
   def magimin

@@ -19,8 +19,8 @@ end
 
 capacity = cli.ask("Вместимость ингредиентов: ", Integer)
 
-selected_potion.brews_dataset
-      .by_capacity(2)
+p selected_potion.brews_dataset
+      .by_capacity(capacity)
       .join(:brew_needed_ingredients, brew_id: :id)
       .join(
         :items,

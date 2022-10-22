@@ -16,7 +16,7 @@ class Brew < Sequel::Model
 
   dataset_module do
     def by_capacity(capacity)
-      where(ingredients_count: capacity)
+      where(Sequel[:brews][:ingredients_count] => capacity)
     end
   end
 

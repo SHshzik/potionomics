@@ -4,6 +4,7 @@ require 'highline'
 require './potion'
 require './ingredient'
 require './brew'
+require './brew_needed_ingredient'
 
 cli = HighLine.new
 
@@ -25,7 +26,7 @@ capacity = cli.ask("Вместимость ингредиентов: ", Integer)
 ingredients.repeated_combination(capacity)
            .select { Brew.valid?(_1, selected_potion.receipt) }
            .each do |ingredients|
-             Brew.create do |brew|
+             brew = Brew.create do |brew|
                brew.potion = selected_potion
                magimin = ingredients.map(&:magimin).transpose.map(&:sum)
                brew.magimin = magimin.to_s
@@ -33,5 +34,12 @@ ingredients.repeated_combination(capacity)
                brew.total_price = ingredients.sum(&:price)
                brew.ingredients_count = capacity
                brew.ingredient_ids = ingredients.sort_by(&:name).map(&:id).to_s
+             end
+             ingredients.group_by { _1 }.transform_values(&:count).each do |ingredient, count|
+               BrewNeededIngredient.create do |brew_needed_ingredient|
+                 brew_needed_ingredient.brew = brew
+                 brew_needed_ingredient.ingredient = ingredient
+                 brew_needed_ingredient.count = count
+               end
              end
            end

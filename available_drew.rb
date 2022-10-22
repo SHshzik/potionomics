@@ -1,8 +1,5 @@
-# frozen_string_literal: true
-
 require 'sqlite3'
 require 'highline'
-require 'percentage'
 require './ingredient'
 require './draw'
 require './potion'
@@ -22,23 +19,17 @@ cli.choose do |menu|
 end
 
 # prepare inventory for receipt
-ingredients = db.execute('select * from inventory inner join ingredients on ingredients.name = inventory.ingredient')
-                .map { |row| Ingredient.new(*row[2..], row[1]) }
+ingredients = db.execute('select * from ingredients where available > 0')
+                .map { |row| Ingredient.new(*row, 1) }
                 .select { _1.suits?(selected_potion.receipt) }
 
 capacity = cli.ask("Вместимость ингредиентов: ", Integer)
 max_magimin = cli.ask("Максимум магии: ", Integer)
 min_magimin = cli.ask("Минимум магии: ", Integer) { |q| q.default = 0 }
 
-def check_ingredients(comb)
-  grouped = comb.group_by(&:name).transform_values(&:count)
-  comb.all? { grouped[_1.name] <= _1.count }
-end
-
 draws = []
-(1..capacity).each do |i|
+(2..capacity).each do |i|
   draws += ingredients.repeated_combination(i)
-                      .select { check_ingredients(_1) }
                       .filter { _1.sum(&:total_magimin) < max_magimin }
                       .filter { _1.sum(&:total_magimin) > min_magimin }
                       .map { Draw.new(_1) }
@@ -64,14 +55,10 @@ magic_number = [
   314, 344, 369, 399
 ]
 
-id = draws.select { magic_number.include?(_1.total_maginim) }.sort_by { [_1.total_maginim, -_1.total_price] }
-
-id.each do |draw|
+draws.select { magic_number.include?(_1.total_maginim) }.sort_by(&:total_maginim).each do |draw|
   p draw.total_price
   p "#{draw.magimin} - #{draw.total_maginim}"
   pp draw.ingredients.map { "#{_1.name} (#{_1.magimin}) (#{_1.count})" }
   p draw.ratio
   p '----------------------------'
 end
-
-p "total_count: #{id.count}"

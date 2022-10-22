@@ -3,6 +3,8 @@
 require './sequel_init'
 
 class Potion < Sequel::Model
+  one_to_many :brews
+
   def receipt
     @receipt ||= [a, b, c, d, e]
   end

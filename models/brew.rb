@@ -14,6 +14,12 @@ class Brew < Sequel::Model
   many_to_one :potion
   one_to_many :brew_needed_ingredients
 
+  dataset_module do
+    def by_capacity(capacity)
+      where(ingredients_count: capacity)
+    end
+  end
+
   def self.valid?(ingredients, receipt)
     magimin = ingredients.map(&:magimin).transpose.map(&:sum)
     total_maginim = magimin.sum

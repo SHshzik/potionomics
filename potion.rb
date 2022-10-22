@@ -1,18 +1,9 @@
 # frozen_string_literal: true
 
-class Potion
-  attr_reader :name
+require './sequel_init'
 
-  def initialize(name, a, b, c, d, e)
-    @name = name
-    @a_val = a
-    @b_val = b
-    @c_val = c
-    @d_val = d
-    @e_val = e
-  end
-
+class Potion < Sequel::Model
   def receipt
-    @receipt ||= [@a_val, @b_val, @c_val, @d_val, @e_val]
+    @receipt ||= [a, b, c, d, e]
   end
 end

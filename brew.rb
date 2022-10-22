@@ -10,7 +10,9 @@ class Brew < Sequel::Model
     169, 194, 214, 234,
     314, 344, 369, 399
   ]
+
   many_to_one :potion
+  one_to_many :brew_needed_ingredients
 
   def self.valid?(ingredients, receipt)
     magimin = ingredients.map(&:magimin).transpose.map(&:sum)

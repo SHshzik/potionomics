@@ -4,6 +4,7 @@ require 'highline'
 require './models/potion'
 require './models/brew'
 require './models/brew_needed_ingredient'
+require './models/ingredient'
 
 cli = HighLine.new
 potions = Potion.all
@@ -19,8 +20,9 @@ end
 
 capacity = cli.ask("Вместимость ингредиентов: ", Integer)
 
-p selected_potion.brews_dataset
+brews = selected_potion.brews_dataset
       .by_capacity(capacity)
+      .select('brews.*')
       .join(:brew_needed_ingredients, brew_id: :id)
       .join(
         :items,
@@ -28,4 +30,14 @@ p selected_potion.brews_dataset
       ) { Sequel[:items][:count] >= Sequel[:brew_needed_ingredients][:count] }
       .group(Sequel[:brews][:id])
       .having(Sequel.function(:count, Sequel[:brew_needed_ingredients][:id]) => Sequel[:brews][:ingredients_count])
+      .select_all(:brews)
       .to_a
+
+brews.each do |brew|
+  p "Total price: #{brew.total_price}"
+  p "Magimin: #{brew.magimin} - #{brew.total_magimin}"
+  brew.brew_needed_ingredients.each do |needed_ingredient|
+    p "Игредиент: #{needed_ingredient.ingredient.name} #{needed_ingredient.ingredient.magimin} (#{needed_ingredient.count})"
+  end
+  p '----------------------------'
+end

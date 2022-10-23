@@ -3,6 +3,16 @@
 require './sequel_init'
 
 class Ingredient < Sequel::Model
+  dataset_module do
+    def for_potion(potion)
+      scope = self
+      potion.hash_receipt.each do |key, value|
+        scope = scope.where(Sequel[key] => 0) if value.zero?
+      end
+      scope
+    end
+  end
+
   def magimin
     @magimin ||= [a, b, c, d, e]
   end

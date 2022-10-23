@@ -29,18 +29,10 @@ class Brew < Sequel::Model
     sum_i = receipt.sum
     new_magimin = magimin.map { _1.as_percentage_of(total_maginim) }
 
-    result = receipt.each_with_index.all? do |i, index|
-      next true if i.zero?
-
-      (i.as_percentage_of(sum_i).to_f - new_magimin[index].to_f).abs < 7
-    end
-
-    ideal = receipt.each_with_index.all? do |i, index|
+    receipt.each_with_index.all? do |i, index|
       next true if i.zero?
 
       i.as_percentage_of(sum_i) == new_magimin[index]
     end
-
-    result && (MAGIC_NUMBER.include?(total_maginim) || ideal)
   end
 end

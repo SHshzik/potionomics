@@ -8,4 +8,14 @@ class Potion < Sequel::Model
   def receipt
     @receipt ||= [a, b, c, d, e]
   end
+
+  def hash_receipt
+    {
+      a: a,
+      b: b,
+      c: c,
+      d: d,
+      e: e
+    }
+  end
 end

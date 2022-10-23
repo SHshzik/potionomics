@@ -11,7 +11,7 @@ cli = HighLine.new
 capacity = cli.ask("Вместимость ингредиентов: ", Integer)
 
 Potion.all.each_with_index do |potion, index|
-  Ingredient.for_potion(potion).to_a.repeated_combination(capacity)
+  Ingredient.for_potion(potion).where(available: true).to_a.repeated_combination(capacity)
              .each_with_index do |ingredients, index2|
                p "#{index} - #{index2}"
 

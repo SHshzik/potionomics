@@ -10,28 +10,30 @@ cli = HighLine.new
 
 capacity = cli.ask("Вместимость ингредиентов: ", Integer)
 
-Potion.all.each_with_index do |potion, index|
-  Ingredient.for_potion(potion).where(available: true).to_a.repeated_combination(capacity)
-             .each_with_index do |ingredients, index2|
-               p "#{index} - #{index2}"
+def generate(combinations)
+  combinations.each_with_index do |ingredients, index|
+    p "#{index}"
 
-               if Brew.valid?(ingredients, potion.receipt)
-                 brew = Brew.create do |brew|
-                   brew.potion = potion
-                   magimin = ingredients.map(&:magimin).transpose.map(&:sum)
-                   brew.magimin = magimin.to_s
-                   brew.total_magimin = magimin.sum
-                   brew.total_price = ingredients.sum(&:price)
-                   brew.ingredients_count = capacity
-                   brew.ingredient_ids = ingredients.sort_by(&:name).map(&:id).to_s
-                 end
-                 ingredients.group_by { _1 }.transform_values(&:count).each do |ingredient, count|
-                   BrewNeededIngredient.create do |brew_needed_ingredient|
-                     brew_needed_ingredient.brew = brew
-                     brew_needed_ingredient.ingredient = ingredient
-                     brew_needed_ingredient.count = count
-                   end
-                 end
-               end
-             end
+    if Brew.valid?(ingredients, potion.receipt)
+      created = false
+      brew = Brew.find_or_create(ingredient_ids: ingredients.sort_by(&:id).map(&:id).to_s) do |brew|
+        created = true
+        brew.potion = potion
+        magimin = ingredients.map(&:magimin).transpose.map(&:sum)
+        brew.magimin = magimin.to_s
+        brew.total_magimin = magimin.sum
+        brew.total_price = ingredients.sum(&:price)
+        brew.ingredients_count = capacity
+      end
+      if created
+        ingredients.group_by { _1 }.transform_values(&:count).each do |ingredient, count|
+          BrewNeededIngredient.create do |brew_needed_ingredient|
+            brew_needed_ingredient.brew = brew
+            brew_needed_ingredient.ingredient = ingredient
+            brew_needed_ingredient.count = count
+          end
+        end
+      end
+    end
+  end
 end

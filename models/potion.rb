@@ -10,12 +10,16 @@ class Potion < Sequel::Model
   end
 
   def hash_receipt
-    {
+    @hash_receipt ||= {
       a: a,
       b: b,
       c: c,
       d: d,
       e: e
     }
+  end
+
+  def receipt_keys
+    @receipt_keys ||= hash_receipt.select { _2.positive? }.keys
   end
 end

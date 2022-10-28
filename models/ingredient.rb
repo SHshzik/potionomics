@@ -20,4 +20,14 @@ class Ingredient < Sequel::Model
   def total_magimin
     magimin.sum
   end
+
+  def hash_magimin
+    @hash_magimin ||= {
+      a: a,
+      b: b,
+      c: c,
+      d: d,
+      e: e
+    }
+  end
 end

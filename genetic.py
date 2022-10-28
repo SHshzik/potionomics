@@ -5,7 +5,7 @@ from pyeasyga import pyeasyga
 
 data = []
 with open("temp.csv", 'r') as file:
-    data = [[int(i) for i in row] for row in csv.reader(file)]
+    data = [[int(i) if i.isdigit() else i for i in row] for row in csv.reader(file)]
 
 capacity = int(sys.argv[1])
 max_a = int(sys.argv[2])
@@ -23,7 +23,7 @@ print(max_e)
 print(data)
 
 ga = pyeasyga.GeneticAlgorithm(data)
-ga.population_size = 20000
+ga.population_size = 5000
 
 def create_individual(data):
     rand = random.sample(data, capacity)
@@ -47,10 +47,12 @@ def fitness(individual, data):
     return weight
 
 ga.fitness_function = fitness               # set the GA's fitness function
-ga.run()                                 # run the GA
 
-result = ga.best_individual()
-for idx, x in enumerate(result[1]):
-    if x == 1:
-        print(data[idx])
-print(result)
+if __name__ == '__main__':
+    ga.run()                                 # run the GA
+
+    result = ga.best_individual()
+    for idx, x in enumerate(result[1]):
+        if x == 1:
+            print(data[idx])
+    print(result)

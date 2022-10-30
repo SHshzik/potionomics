@@ -24,7 +24,7 @@ capacity = cli.ask("Вместимость ингредиентов: ", Integer)
 max_magimin = cli.ask("Максимум магии: ", Integer)
 
 ingredients = Ingredient
-                        .for_potion(selected_potion)
+                        # .for_potion(selected_potion)
                         .join(:items, ingredient_id: :id)
                         .select_all(:ingredients)
                         .select_append(:count)
@@ -33,7 +33,7 @@ ingredients = Ingredient
 CSV.open('temp.csv', 'w') do |csv|
   ingredients.each do |ingredient|
     [ingredient[:count], capacity].min.times do
-      csv << ingredient.magimin + [ingredient.price, ingredient.name]
+      csv << ingredient.magimin + [ingredient.price, ingredient.name, ingredient.taste, ingredient.touch, ingredient.smell, ingredient.sight, ingredient.sound]
     end
   end
 end
@@ -41,6 +41,12 @@ end
 maxi = {}
 sum_i = selected_potion.receipt.sum
 selected_potion.hash_receipt.each_with_index do |(key, value), index|
+  # if value.as_percentage_of(sum_i).zero?
+  #   maxi["max_#{key}"] = max_magimin.percent_of(6).to_i
+  # else
+  #   maxi["max_#{key}"] = (value.as_percentage_of(sum_i) * max_magimin).to_i
+  # end
+
   maxi["max_#{key}"] = (value.as_percentage_of(sum_i) * max_magimin).to_i
 end
 

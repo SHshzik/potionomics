@@ -23,7 +23,8 @@ end
 capacity = cli.ask("Вместимость ингредиентов: ", Integer)
 max_magimin = cli.ask("Максимум магии: ", Integer)
 
-ingredients = Ingredient.for_potion(selected_potion)
+ingredients = Ingredient
+                        # .for_potion(selected_potion)
                         .where(available: true)
                         .where(disable: false)
                         .left_join(:items, ingredient_id: :id)
@@ -34,7 +35,7 @@ ingredients = Ingredient.for_potion(selected_potion)
 CSV.open('temp.csv', 'w') do |csv|
   ingredients.each do |ingredient|
     [ingredient[:full_count], capacity].min.times do
-      csv << ingredient.magimin + [ingredient.price, ingredient.name]
+      csv << ingredient.magimin + [ingredient.price, ingredient.name, ingredient.taste, ingredient.touch, ingredient.smell, ingredient.sight, ingredient.sound]
     end
   end
 end

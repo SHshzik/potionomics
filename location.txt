@@ -1,0 +1,52 @@
+minor < 60 < common < 150 < greater < 290 < grand < 720
+
+Mint - 17/3
+Xid - 10/6
+Corsac - 18/4
+
+Enchanted Forest:
+  Full HP - > 15
+  Mana - >= 5
+
+  Mint: 1 common mana
+  Xid: 1 comon hp
+  Corsac: 1 minor mana
+
+Bone Wastes:
+  Full HP:
+  	1. 38
+  	2. 1 minor fire tonic - 29
+  	3. 1 common fire tonic - 23
+  	4. 1 great fire tonic - 19
+  Mana - >= 6
+
+  Mint:
+  	Mana:
+	  1 greater
+	HP
+      1. Grand hp
+      2. Greater
+      3. Common
+      4. Minor
+  Xid
+    HP:
+      1. Grand
+      2. Grand
+      3. greater
+      4. Common
+  Corsac
+    Mana
+      Common
+    HP:
+      1. Grand hp
+      2. greater
+      3. common
+      4. minor
+
+Mushroom mire
+  Mana - 6
+  HP - 27 hp
+  Minor Poison Cure
+
+  Mint - greater hp + greater mana
+  xid - grand hp

@@ -20,7 +20,7 @@ print(max_b)
 print(max_c)
 print(max_d)
 print(max_e)
-print(data)
+# print(data)
 
 ga = pyeasyga.GeneticAlgorithm(data)
 ga.population_size = 5000

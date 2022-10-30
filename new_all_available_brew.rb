@@ -25,6 +25,7 @@ max_magimin = cli.ask("Максимум магии: ", Integer)
 
 ingredients = Ingredient.for_potion(selected_potion)
                         .where(available: true)
+                        .where(disable: false)
                         .left_join(:items, ingredient_id: :id)
                         .select_all(:ingredients)
                         .select_append(Sequel.as(Sequel[:shop_count] + Sequel.function(:ifnull, Sequel[:count], 0), :full_count))

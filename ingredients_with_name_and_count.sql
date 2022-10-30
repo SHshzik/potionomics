@@ -1,0 +1,1 @@
+select ingredients.name, items.count from items inner join ingredients on ingredients.id = items.ingredient_id

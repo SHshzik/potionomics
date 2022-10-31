@@ -23,7 +23,7 @@ end
 capacity = cli.ask("Вместимость ингредиентов: ", Integer)
 max_magimin = cli.ask("Максимум магии: ", Integer)
 
-ingredients = Ingredient.join(:items, ingredient_id: :id).select_all(:ingredients).select_append(:count).all
+ingredients = Ingredient.join(:items, ingredient_id: :id).select_all(:ingredients).select_append(:count).where { a + b + c + d + e > 20 }.all
 
 CSV.open('temp.csv', 'w') do |csv|
   ingredients.each do |ingredient|
@@ -39,8 +39,13 @@ selected_potion.hash_receipt.each_with_index do |(key, value), index|
   maxi["max_#{key}"] = (value.as_percentage_of(sum_i) * max_magimin).to_i
 end
 
-result = `python3 genetic.py #{capacity} #{maxi['max_a']} #{maxi['max_b']} #{maxi['max_c']} #{maxi['max_d']} #{maxi['max_e']}`
+result = `python genetic.py #{capacity} #{maxi['max_a']} #{maxi['max_b']} #{maxi['max_c']} #{maxi['max_d']} #{maxi['max_e']}`
 
 File.write('brew.csv', result)
 
-print(result)
+needed_ingredients = CSV.read("brew.csv")
+
+needed_ingredients.each do |needed_ingredient|
+  ingredient = Ingredient.first(name: needed_ingredient[0])
+  p "#{ingredient.name}, #{ingredient.magimin}"
+end

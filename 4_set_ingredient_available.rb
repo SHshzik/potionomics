@@ -18,3 +18,11 @@ end
 
 selected_ingredient.available = true
 selected_ingredient.save
+
+item = Item.first(ingredient_id: selected_ingredient.id)
+item.count -= 1
+if item.count > 0
+  item.save
+else
+  item.destroy
+end

@@ -23,13 +23,12 @@ end
 capacity = cli.ask("Вместимость ингредиентов: ", Integer)
 max_magimin = cli.ask("Максимум магии: ", Integer)
 
-ingredients = Ingredient
-                        # .for_potion(selected_potion)
-                        .where(available: true)
+ingredients = Ingredient.where(available: true)
                         .where(disable: false)
                         .left_join(:items, ingredient_id: :id)
                         .select_all(:ingredients)
                         .select_append(Sequel.as(Sequel[:shop_count] + Sequel.function(:ifnull, Sequel[:count], 0), :full_count))
+                        .where { a + b + c + d + e > 20 }
                         .all
 
 CSV.open('temp.csv', 'w') do |csv|
@@ -46,6 +45,14 @@ selected_potion.hash_receipt.each_with_index do |(key, value), index|
   maxi["max_#{key}"] = (value.as_percentage_of(sum_i) * max_magimin).to_i
 end
 
-result = `python3 genetic.py #{capacity} #{maxi['max_a']} #{maxi['max_b']} #{maxi['max_c']} #{maxi['max_d']} #{maxi['max_e']}`
+result = `python genetic.py #{capacity} #{maxi['max_a']} #{maxi['max_b']} #{maxi['max_c']} #{maxi['max_d']} #{maxi['max_e']}`
 
-print(result)
+File.write('brew1.csv', result)
+
+needed_ingredients = CSV.read("brew1.csv")
+
+p needed_ingredients.sum(&:total_magimin)
+needed_ingredients.each do |needed_ingredient|
+  ingredient = Ingredient.first(name: needed_ingredient[0])
+  p "#{ingredient.name}, #{ingredient.magimin}"
+end

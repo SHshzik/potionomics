@@ -54,12 +54,13 @@ def fitness(individual, data):
         if max_e == 0:
             mixins += e
         if (max_a > 0 and a > max_a) or (max_b > 0 and b > max_b) or (max_c > 0 and c > max_c) or (max_d > 0 and d > max_d) or (max_e > 0 and e > max_e):
-        # if a > max_a or b > max_b or c > max_c or d > max_d or e > max_e:
             weight = 0
         if weight > 0 and ((mixins / float(weight)) * 100 > 15):
             weight = 0
         if weight > (max_a + max_b + max_c + max_d + max_e):
             weight = 0
+        # if taste <= 0 or touch < 0 or smell <= 0 or sight < 0 or sound <= 0:
+            # weight = 0
     return weight
 
 ga.fitness_function = fitness
@@ -71,4 +72,4 @@ if __name__ == '__main__':
     for idx, x in enumerate(result[1]):
         if x == 1:
             ingredient = data[idx]
-            print('{name}, 1'.format(name=ingredient[6]))
+            print('{name},1'.format(name=ingredient[6]))

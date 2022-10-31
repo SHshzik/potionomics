@@ -14,17 +14,8 @@ max_c = int(sys.argv[4])
 max_d = int(sys.argv[5])
 max_e = int(sys.argv[6])
 
-print(capacity)
-print(max_a)
-print(max_b)
-print(max_c)
-print(max_d)
-print(max_e)
-# print(data)
-
 ga = pyeasyga.GeneticAlgorithm(data)
 ga.population_size = 5000
-# ga.population_size = 10000
 
 def create_individual(data):
     rand = random.sample(data, capacity)
@@ -71,13 +62,13 @@ def fitness(individual, data):
             weight = 0
     return weight
 
-ga.fitness_function = fitness               # set the GA's fitness function
+ga.fitness_function = fitness
 
 if __name__ == '__main__':
-    ga.run()                                 # run the GA
+    ga.run()
 
     result = ga.best_individual()
     for idx, x in enumerate(result[1]):
         if x == 1:
-            print(data[idx])
-    print(result)
+            ingredient = data[idx]
+            print('{name}, 1'.format(name=ingredient[6]))

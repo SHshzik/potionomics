@@ -3,7 +3,7 @@
 require 'csv'
 require './models/ingredient'
 
-table = CSV.parse(File.read('1.csv'), headers: true)
+table = CSV.parse(File.read('import.csv'), headers: true)
 
 def trait(row, name)
   if row[name] == 'Good'

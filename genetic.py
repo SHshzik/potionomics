@@ -73,7 +73,7 @@ def check_ratio(a, b, c, d, e):
     magimin = [a, b, c, d, e]
     magimin_sum = sum(magimin)
     if receipt_sum == 2:
-        return all([magimin[index] / magimin_sum * 100 < 60 and magimin[index] / magimin_sum > 35 for index, r in enumerate(receipt) if r > 0])
+        return all([magimin[index] / magimin_sum * 100 < 60 and magimin[index] / magimin_sum * 100 > 35 for index, r in enumerate(receipt) if r > 0])
     if receipt_sum == 4:
         return all([
             magimin[index] / magimin_sum * 100 < 30 and magimin[index] / magimin_sum * 100 > 18 if r == 1 else

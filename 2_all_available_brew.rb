@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'csv'
+require 'csv' # TODO: mv to script
 require 'highline'
 require 'percentage'
 require './models/ingredient'

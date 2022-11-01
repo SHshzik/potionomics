@@ -38,8 +38,7 @@ def calculate_mixins(a, b, c, d, e):
     return mixins
 
 def fitness(individual, data):
-    # TODO: add price?
-    a, b, c, d, e = 0, 0, 0, 0, 0
+    a, b, c, d, e, price, weight = 0, 0, 0, 0, 0, 0, 0
     value = 0
     if individual.count(1) == capacity: # TODO: check - needed this? create_individual can fix this
         for (selected, item) in zip(individual, data):
@@ -49,8 +48,9 @@ def fitness(individual, data):
                 c += item[2]
                 d += item[3]
                 e += item[4]
-
-                value += (item[0] + item[1] + item[2] + item[3] + item[4])
+                price += item[5]
+                weight += item[0] + item[1] + item[2] + item[3] + item[4]
+                value += weight * (weight / price)
         mixins = calculate_mixins(a, b, c, d, e)
         if ((max_a > 0 and a > max_a) or
             (max_b > 0 and b > max_b) or
@@ -58,9 +58,9 @@ def fitness(individual, data):
             (max_d > 0 and d > max_d) or
             (max_e > 0 and e > max_e)):
             value = 0
-        if value > 0 and ((mixins / float(value)) * 100 > 15):
+        if weight > 0 and ((mixins / float(weight)) * 100 > 15):
             value = 0
-        if value > (max_a + max_b + max_c + max_d + max_e):
+        if weight > (max_a + max_b + max_c + max_d + max_e):
             value = 0
         if a == b and mixins == 0:
             value *= 1.3

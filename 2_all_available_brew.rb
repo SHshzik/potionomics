@@ -23,4 +23,4 @@ ingredients = Ingredient.where(available: true)
 
 generate_csv(ingredients, capacity)
 maxi = generate_max_magimin(selected_potion, max_magimin)
-generate_brew(capacity, maxi, brew_name: 'brew1.csv')
+generate_brew(capacity, maxi, selected_potion.receipt, brew_name: 'brew1.csv')

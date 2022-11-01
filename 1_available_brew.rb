@@ -22,4 +22,4 @@ ingredients = Ingredient.join(:items, ingredient_id: :id)
 
 generate_csv(ingredients, capacity)
 maxi = generate_max_magimin(selected_potion, max_magimin)
-generate_brew(capacity, maxi)
+generate_brew(capacity, maxi, selected_potion.receipt)

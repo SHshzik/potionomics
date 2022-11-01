@@ -3,49 +3,23 @@
 require 'csv'
 require 'highline'
 require 'percentage'
-require './models/potion'
-require './models/brew'
-require './models/brew_needed_ingredient'
 require './models/ingredient'
+require './scripts/select_potion'
+require './scripts/generate_csv'
+require './scripts/generate_max_magimin'
+require './scripts/generate_brew'
 
 cli = HighLine.new
-potions = Potion.all
-
-# select potion for brew
-selected_potion = nil
-cli.choose do |menu|
-  menu.prompt = "Выбери зелье: "
-  potions.each do |potion|
-    menu.choice(potion.name) { selected_potion = potion }
-  end
-end
-
+selected_potion = get_selected_potion(cli)
 capacity = cli.ask("Вместимость ингредиентов: ", Integer)
 max_magimin = cli.ask("Максимум магии: ", Integer)
 
-ingredients = Ingredient.join(:items, ingredient_id: :id).select_all(:ingredients).select_append(:count).where { a + b + c + d + e > 20 }.all
+ingredients = Ingredient.join(:items, ingredient_id: :id)
+                        .select_all(:ingredients)
+                        .select_append(Sequel.as(Sequel[:items][:count], :full_count))
+                        .where { a + b + c + d + e > 20 } # TODO: more calculate
+                        .all
 
-CSV.open('temp.csv', 'w') do |csv|
-  ingredients.each do |ingredient|
-    [ingredient[:count], capacity].min.times do
-      csv << ingredient.magimin + [ingredient.price, ingredient.name, ingredient.taste, ingredient.touch, ingredient.smell, ingredient.sight, ingredient.sound]
-    end
-  end
-end
-
-maxi = {}
-sum_i = selected_potion.receipt.sum
-selected_potion.hash_receipt.each_with_index do |(key, value), index|
-  maxi["max_#{key}"] = (value.as_percentage_of(sum_i) * max_magimin).to_i
-end
-
-result = `python genetic.py #{capacity} #{maxi['max_a']} #{maxi['max_b']} #{maxi['max_c']} #{maxi['max_d']} #{maxi['max_e']}`
-
-File.write('brew.csv', result)
-
-needed_ingredients = CSV.read("brew.csv")
-
-needed_ingredients.each do |needed_ingredient|
-  ingredient = Ingredient.first(name: needed_ingredient[0])
-  p "#{ingredient.name}, #{ingredient.magimin}"
-end
+generate_csv(ingredients, capacity)
+maxi = generate_max_magimin(selected_potion, max_magimin)
+generate_brew(capacity, maxi)

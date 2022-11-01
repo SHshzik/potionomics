@@ -18,6 +18,8 @@ def trait(row, name)
   end
 end
 
+# TODO: add set shop count by rarity (10, 4, 2, 1)
+# TODO: rewrite sync
 table.each do |row|
   p row['Ingredients']
   # p row['A']

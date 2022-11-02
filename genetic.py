@@ -61,6 +61,7 @@ def fitness(individual, data):
                 weight += item[0] + item[1] + item[2] + item[3] + item[4]
                 value += weight # item[0] + item[1] * 0.1 + item[2] * 0.1 + item[3] + item[4] * 0.1
         mixins = calculate_mixins(a, b, c, d, e)
+        value *= (1 - (mixins / float(weight)))
         if ((max_a > 0 and a > max_a) or
             (max_b > 0 and b > max_b) or
             (max_c > 0 and c > max_c) or
@@ -69,7 +70,7 @@ def fitness(individual, data):
             value = 0
         if value > 0 and weight > (max_a + max_b + max_c + max_d + max_e):
             value = 0
-        if value > 0 and weight > 0 and ((mixins / float(weight)) * 100 > 15):
+        if value > 0 and weight > 0 and ((mixins / float(weight)) * 100 > 25):
             value = 0
     return value
 

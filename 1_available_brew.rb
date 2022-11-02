@@ -14,7 +14,8 @@ selected_potion = get_selected_potion(cli)
 capacity = cli.ask("Вместимость ингредиентов: ", Integer)
 max_magimin = cli.ask("Максимум магии: ", Integer)
 
-ingredients = Ingredient.join(:items, ingredient_id: :id)
+ingredients = Ingredient.for_potion_new(selected_potion)
+                        .join(:items, ingredient_id: :id)
                         .select_all(:ingredients)
                         .select_append(Sequel.as(Sequel[:items][:count], :full_count))
                         .where { a + b + c + d + e > 20 } # TODO: more calculate

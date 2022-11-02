@@ -11,6 +11,13 @@ class Ingredient < Sequel::Model
       end
       scope
     end
+
+    def for_potion_new(potion)
+      fields = potion.hash_receipt.map do |key, value|
+        { Sequel[key] => 0 } unless value.zero?
+      end.compact.inject(:merge)
+      exclude(fields)
+    end
   end
 
   def magimin

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 def generate_brew(capacity, maxi, receipt, brew_name: 'brew.csv')
-  result = `python genetic.py #{capacity} #{maxi['max_a']} #{maxi['max_b']} #{maxi['max_c']} #{maxi['max_d']} #{maxi['max_e']} '#{receipt.join(',')}'`
+  result = `python genetic.py #{capacity} #{maxi['max_a']} #{maxi['max_b']} #{maxi['max_c']} #{maxi['max_d']} #{maxi['max_e']} #{receipt.join(',')}`
 
   File.write(brew_name, result)
 

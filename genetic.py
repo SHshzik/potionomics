@@ -2,6 +2,7 @@ import csv
 import sys
 import random
 import math
+import fractions
 from pyeasyga import pyeasyga
 
 capacity = int(sys.argv[1])
@@ -53,7 +54,7 @@ def solveThreeRatio(ratio):
 
     # To print the given proportion
     # in simplest form.
-    gcd1 = math.gcd(math.gcd(A, B), C)
+    gcd1 = fractions.gcd(fractions.gcd(A, B), C)
 
     return A // gcd1 == ratio[0][0] and B // gcd1 == ratio[1][0] and C // gcd1 == ratio[2][0]
 
@@ -110,14 +111,14 @@ def fitness(individual, data):
             (max_d > 0 and d > max_d) or
             (max_e > 0 and e > max_e)):
             value = 0
-        if not check_ratio(a, b, c, d, e):
+        if value > 0 and weight > (max_a + max_b + max_c + max_d + max_e):
             value = 0
-        if weight > 0 and ((mixins / float(weight)) * 100 > 15):
+        # if value > 0 and not check_ratio(a, b, c, d, e):
+            # value = 0
+        if value > 0 and weight > 0 and ((mixins / float(weight)) * 100 > 15):
             value = 0
-        if weight > (max_a + max_b + max_c + max_d + max_e):
-            value = 0
-        if mixins == 0 and is_ideal(a, b, c, d, e):
-            value *= 1.3
+        # if value > 0 and mixins == 0 and is_ideal(a, b, c, d, e):
+            # value *= 1.3
     return value
 
 ga.fitness_function = fitness
